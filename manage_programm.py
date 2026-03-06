@@ -2,6 +2,7 @@
 import pyglet
 import random
 from pyglet import shapes
+import logic
 
 random.seed()
 
@@ -36,8 +37,8 @@ class Programm_Init():
         return d,e,f,arc
     def game_window_deco(batch):
         """handels decoratve elements on the game window"""
-        arc = shapes.Arc(500,500,10, color=(0, 255, 0), thickness=3,batch=batch)
-        return arc
+        curve = logic.TerrainGenerator.create_bezier_curve(batch=batch)
+        return curve
     
 class assets():
     def create_penis(x,y,batch):
