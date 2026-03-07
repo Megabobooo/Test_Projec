@@ -31,3 +31,13 @@ class TerrainGenerator():
         """returns random bezier curve"""
         curve = shapes.BezierCurve(*TerrainGenerator.semi_random_points(),color=(255,0,0),batch=batch)
         return curve
+    
+    def text_field_logic(textfield,symbol):
+        """"text feld logik dings da bumgs da"""
+        if symbol == 65288:
+                textfield.text = textfield.text[:-1]
+        if len(textfield.text) < 15:
+            if 97 <= symbol <= 122:
+                textfield.text += chr(symbol)
+            elif symbol == 32:
+                textfield.text += " "

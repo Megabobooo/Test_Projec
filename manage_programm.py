@@ -14,7 +14,7 @@ class Button():
         self.second_y = y2
 
 class Programm_Init():
-    def init_window(window_one_width=1200,window_one_height=1200,window_one_text="aaa",visibility = True):
+    def init_window(window_one_width=900,window_one_height=900,window_one_text="aaa",visibility = True):
         """initialises one window"""
         window = pyglet.window.Window(window_one_width,window_one_height,window_one_text)
         window.set_visible(visibility)
@@ -32,13 +32,17 @@ class Programm_Init():
         return a,b,c
     def setup_window_deco(batch):
         """handels decoratve elements on the setup window"""
-        d,e,f = assets.create_penis(100,100,batch=batch)  
+        d,e,f = assets.create_penis(100,100,batch=batch) 
         arc = shapes.Arc(500,500,10, color=(0, 255, 0), thickness=3,batch=batch)
         return d,e,f,arc
+    
     def game_window_deco(batch):
         """handels decoratve elements on the game window"""
         curve = logic.TerrainGenerator.create_bezier_curve(batch=batch)
         return curve
+    def text_entry(batch):
+        label = pyglet.text.Label(text="",x=100,y=200,width=100,height=100,batch=batch)
+        return label
     
 class assets():
     def create_penis(x,y,batch):

@@ -4,6 +4,7 @@ import random
 from pyglet import shapes
 import manage_programm
 import collisions
+import logic
 
 def main():
     """main body of the game"""
@@ -19,6 +20,7 @@ def main():
     setup_batch = manage_programm.Programm_Init.init_batch()
     setup_button = manage_programm.Programm_Init.init_button(500,700,700,750,batch=setup_batch,image_when_not_pressed=picture2,image_when_pressed=picture2)
     setup_deco = manage_programm.Programm_Init.setup_window_deco(setup_batch)
+    setup_text_field = manage_programm.Programm_Init.text_entry(setup_batch)
 
     game_window = manage_programm.Programm_Init.init_window(window_one_text="game_window",visibility=False)
     game_batch = manage_programm.Programm_Init.init_batch()
@@ -46,6 +48,10 @@ def main():
         setup_window.switch_to()
         setup_window.clear()
         setup_batch.draw()
+
+    @setup_window.event
+    def on_key_press(symbol,modifiers):
+        logic.TerrainGenerator.text_field_logic(setup_text_field,symbol)
 
     @setup_window.event
     def on_mouse_press(x,y,button,modifiers):
