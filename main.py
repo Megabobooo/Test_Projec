@@ -36,6 +36,11 @@ def main():
             setup_window.set_visible(True)
             main_window.close()
 
+    @main_window.event
+    def on_close():
+        setup_window.close()
+        game_window.close()
+
     @setup_window.event 
     def on_draw():
         setup_window.switch_to()
@@ -47,6 +52,10 @@ def main():
         if collisions.Mouse_collisions.button_pressed(setup_button,x,y):
             game_window.set_visible(True)
             setup_window.close()
+
+    @setup_window.event()
+    def on_close():
+        game_window.close()
     
     @game_window.event 
     def on_draw():
